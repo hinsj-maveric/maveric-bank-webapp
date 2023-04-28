@@ -3,15 +3,13 @@ import mavericHeader from '../assets/maveric-logo-updated.png'
 
 function Header() {
 
-  
-
   const logout = (e) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
     window.location.href = '/';    
+    localStorage.removeItem("token");
+    localStorage.removeItem("user"); 
   }
 
-  var classname = localStorage.getItem("token") ? "header-logout-button" : "display";
+  var classname = (localStorage.getItem("token")) ? "header-logout-button" : "display";
 
   return (
     <div className='header'>

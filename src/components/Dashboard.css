@@ -45,6 +45,7 @@ table > tr {
 .userDetailField {
     width: 15%;
     padding-bottom: 1%;
+    font-weight: bold;
 }
 
 .dashboard-table-accountInfo {
@@ -66,4 +67,12 @@ table > tr {
 th {
     background-color: #214e8f;
     color: white;
+}
+
+.dashboard-table-accountInfo > tr:nth-child(even) {
+    background-color: white;
+}
+
+.textcenter{
+    text-align: center !important;
 }
