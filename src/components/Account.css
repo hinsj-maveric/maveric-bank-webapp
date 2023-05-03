@@ -63,3 +63,7 @@ th {
     background-color: #214e8f;
     color: white;
 }
+
+.account-table-transactionInfo > tr:nth-child(even) {
+    background-color: white;
+}

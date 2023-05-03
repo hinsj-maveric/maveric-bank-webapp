@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -10,6 +10,11 @@ function Login() {
     const [currentUser, setCurrentUser] = useState();
     const [authToken, setAuthToken] = useState();
 
+    useEffect(()=> {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+    }, [])
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -20,19 +25,20 @@ function Login() {
 
         axios.post('/api/v1/auth/login', obj)
         .then(response =>{
-            console.log(response)
             setAuthToken(response.data.token);
-            
-            localStorage.setItem("token", authToken);
 
             setCurrentUser(response.data.user);
-            localStorage.setItem("user", JSON.stringify(currentUser));
-            
-             window.location.href = '/signup'
+
+            window.location.href = '/dashboard';
 
         })
         .catch(err => setErrorMessage(err.response.data.message));
+
+        
     }
+
+    localStorage.setItem("token", authToken);
+    localStorage.setItem("user", JSON.stringify(currentUser));
 
   return (
     <>
